@@ -43,5 +43,32 @@ app.get('/', function (req, res) {
 	
  })
 
+  // Route that allows me to delete a grocery list item
+  app.post('/update_item', function (req, res) {
+	//Getting body parameters
+	const { updaterecordID} = req.body;
+
+	dbOperations.getAItem(updaterecordID, res);
+	
+
+	//dbOperations.updateItem(updaterecordId);
+	
+ })
+
+   // Route that allows me to delete a grocery list item
+   app.post('/confirm_update', function (req, res) {
+	//Getting body parameters
+	const { itemID, item_count, item_name} = req.body;
+
+	const updateGroceryObject = { itemID, item_count, item_name};
+
+
+	dbOperations.updateItem(updateGroceryObject, res);
+	//dbOperations.updateItem(updaterecordId);
+	
+ })
+
  
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+

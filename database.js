@@ -60,6 +60,28 @@ let getAllItems = (res) => {
 }
 
 
+
+//Display a grocery item
+let getAItem = (id, res) => {
+    var getGroceryItem = 'SELECT itemID, item_name, item_count FROM grocery_item WHERE itemID = ?';
+    var params = [id];
+    db.get(getGroceryItem, params, function(err, row){
+        if (err) {
+         
+            throw err;
+          }
+          /*rows.forEach((row) => {
+            console.log(row.item_name);
+          });*/
+          console.log(row);
+          res.render('update', {row});
+
+    })
+    
+}
+
+
+
 //Delete a Grocery List Item
 let deleteItem = (recordToDelete, res) =>{
     
@@ -80,4 +102,25 @@ let deleteItem = (recordToDelete, res) =>{
     getAllItems(res);
 }
 
-module.exports = {deleteItem, createItem, getAllItems}
+//Updat a Grocery List Item
+let updateItem = (updatedItemObject, res) =>{
+    
+    var updateGroceryItem = 'UPDATE grocery_item SET item_name = ?, item_count= ? WHERE itemID = ?';
+	
+    var params = [updatedItemObject.item_name, updatedItemObject.item_count, updatedItemObject.itemID];
+
+	db.run(updateGroceryItem, params, function(err){
+		if (err){
+			return console.log(err.message);
+		}
+    
+
+		console.log("Grocery Item Updated");
+		console.log(`Rows updated ${this.changes}`);	  
+	});
+
+    getAllItems(res);
+}
+
+
+module.exports = {deleteItem, updateItem, getAItem, createItem, getAllItems}

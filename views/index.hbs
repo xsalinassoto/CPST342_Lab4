@@ -8,11 +8,13 @@
             #container{
                 width: 50%;
                 margin: auto;
+                font-family: 'Roboto', sans-serif;
             }
             table {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
                 width: 100%;
+                font-family: 'Roboto', sans-serif;
                 }
 
                 td, th {
@@ -23,25 +25,41 @@
 
                 tr:nth-child(even) {
                 background-color: #dddddd;
-            }
+                 }
+
+                 #getbackground{
+                    background-image: url(./grocery_bg.jpg);
+                    background-size: 100%;
+                    height: 300px;
+                    color: white;
+                    text-align: end;
+                    background-position: center;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                 }
         </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="container">
-            <h1>Family Grocery List</h1>
+            <h1 id="getbackground">Family Grocery List</h1>
 
             
             <!--Form to accept grocery data-->
             <h2>Enter Grocery Item:</h2>
             <form action="/create_item" method="POST">
-                <input type="text"  name="item_name" class="form-control"  placeholder="Enter grocery item (ex. Cereal)" size="40"><br>
-                <input type="number"  name="item_count" class="form-control" placeholder="Enter quantity (ex. 2)" size="60"><br>
+                <input type="text"  name="item_name" class="form-control"   placeholder="Enter grocery item (ex. Cereal)" size="40"><br>
+                <input type="number"  name="item_count" class="form-control"  placeholder="Enter quantity (ex. 2)" size="60"><br>
                 <input type="submit" class="btn btn-primary" value="submit">
             </form>
 
             <!-- Display Grocery Items -->
             <h2>Grocery List:</h2>
-            <table style="margin: 20px;">
+            <table style="margin-top: 24px;">
                     <tr>
                         <th>Grocery Item</th>
                         <th>Quantity</th>
@@ -49,9 +67,12 @@
                     </tr>
                 {{#each rows}}
                     <tr>
-                        <td>{{this.item_name}}</td>
-                        <td>{{this.item_count}}</td>
+                        <td contenteditable="true">{{this.item_name}}</td>
+                        <td contenteditable="true">{{this.item_count}}</td>
                         <td>
+                            <form action="/update_item" method="POST" style="float: left; margin-right: 4%;">
+                                <button name="updaterecordID" id="updatenow" type="submit" class="btn btn-info" value="{{this.itemID}}">UPDATE</button>
+                            </form>
                             <form action="/delete_item" method="POST">
                                 <button name="deleterecord" id="deletenow" type="submit" class="btn btn-danger" value="{{this.itemID}}">DELETE</button>
                             </form>
@@ -61,6 +82,9 @@
                 {{/each}}
             </table>
         </div>
+        <script>
+            
+        </script>
     </body>
 
 </html>
