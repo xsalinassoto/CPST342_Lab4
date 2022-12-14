@@ -2,9 +2,17 @@
 <html>
     <head>
         <title>Family Grocery List</title>
-         <meta charset="UTF-8">
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
+            @font-face {
+            font-family: 'AlfaSlabOne-Regular';
+            src: url(./AlfaSlabOne-Regular.woff2) format('woff2'),
+                url(./AlfaSlabOne-Regular.woff) format('woff'),
+                url(./AlfaSlabOne-Regular.ttf) format('truetype');
+            }
             #container{
                 width: 95%;
                 margin: auto;
@@ -19,11 +27,15 @@
 
             td, th {
                 text-align: left;
+                font-family: 'AlfaSlabOne-Regular';
                 padding: 8px;
             }
 
             tr:nth-child(even) {
                 background-color: #dddddd;
+            }
+            h1,h2{
+                font-family: 'AlfaSlabOne-Regular';
             }
 
             #getbackground{
@@ -31,11 +43,12 @@
                 background-size: 100%;
                 height: 300px;
                 color: white;
-                font-size: 8.8vw;
+                font-family: 'AlfaSlabOne-Regular';
+                font-size: 7vw;
                 margin-bottom: 50px;
                 line-height: .6;
                 text-transform: uppercase;
-                font-weight: 900;
+              
                 text-align: end;
                 background-position: center;
                 width: 100%;
