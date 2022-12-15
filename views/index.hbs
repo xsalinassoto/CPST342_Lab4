@@ -88,7 +88,8 @@
             <form action="/create_item" method="POST">
                 <input type="text"  name="item_name" class="form-control"   placeholder="Enter grocery item (ex. Cereal)" size="40"><br>
                 <input type="number"  name="item_count" class="form-control"  placeholder="Enter quantity (ex. 2)" size="60"><br>
-                <input type="submit" class="btn btn-primary" style="margin-bottom: 3%;" value="submit">
+                <!--<input type="submit" class="btn btn-primary" id="addItem" onclick="playAddItemSound()" style="margin-bottom: 3%;" value="submit">-->
+                <button class="btn btn-primary" style="margin-bottom: 3%;">SUBMIT</button>
             </form>
 
             <!-- Display Grocery Items -->
@@ -117,7 +118,16 @@
             </table>
         </div>
         <script>
-            
+
+            const audio = new Audio("./mixkit_add.wav");
+            const buttons = document.querySelectorAll("button");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    audio.play();
+                });
+            });
+
         </script>
     </body>
 
